@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1psmtcks6grj"]
+
+[ext_resource type="Texture2D" uid="uid://ecsksvb8lac5" path="res://Character/Body/1/1.png" id="1_fcc16"]
+[ext_resource type="Texture2D" uid="uid://b7omki54hq42g" path="res://Character/Head/1.png" id="2_shee7"]
+
+[node name="Character" type="Node2D"]
+
+[node name="Body" type="Sprite2D" parent="."]
+scale = Vector2(0.236837, 0.236837)
+texture = ExtResource("1_fcc16")
+
+[node name="Head" type="Sprite2D" parent="."]
+scale = Vector2(0.237, 0.237)
+texture = ExtResource("2_shee7")

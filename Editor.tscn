@@ -1,0 +1,126 @@
+[gd_scene load_steps=2 format=3 uid="uid://xd18phyc65a4"]
+
+[ext_resource type="PackedScene" uid="uid://d1psmtcks6grj" path="res://Character.tscn" id="1_kv2bb"]
+
+[node name="Main" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.258824, 0.286275, 0.215686)
+metadata/_edit_group_ = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Control" type="Control" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 5
+
+[node name="CharacterPreview" type="VBoxContainer" parent="Control/MarginContainer/Control"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+offset_right = 548.0
+offset_bottom = 548.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/Control/CharacterPreview"]
+custom_minimum_size = Vector2(500, 548)
+layout_mode = 2
+color = Color(1, 1, 1, 0.105882)
+
+[node name="Character" parent="Control/MarginContainer/Control/CharacterPreview" instance=ExtResource("1_kv2bb")]
+position = Vector2(273, 281)
+scale = Vector2(1.28, 1.28)
+
+[node name="CenterContainer2" type="CenterContainer" parent="Control/MarginContainer/Control"]
+layout_mode = 2
+offset_left = 552.0
+offset_right = 1052.0
+offset_bottom = 548.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/Control/CenterContainer2"]
+layout_mode = 2
+alignment = 1
+
+[node name="Menu" type="VBoxContainer" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(500, 500)
+layout_mode = 2
+alignment = 1
+
+[node name="Head" type="Control" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Head"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pre" type="Button" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Head/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "<"
+
+[node name="Head" type="Label" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Head/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Head"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Head/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = ">"
+
+[node name="Body" type="Control" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pre" type="Button" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "<"
+
+[node name="body" type="Label" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Body
+"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = ">"
