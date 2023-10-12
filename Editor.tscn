@@ -53,15 +53,15 @@ custom_minimum_size = Vector2(500, 548)
 layout_mode = 2
 color = Color(1, 1, 1, 0.105882)
 
-[node name="HeadSprite" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
-position = Vector2(277, 280)
-scale = Vector2(0.294, 0.294)
-texture = ExtResource("2_qj0ue")
-
 [node name="BodySprite" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
 position = Vector2(277, 280)
 scale = Vector2(0.294485, 0.294485)
 texture = ExtResource("3_70h1k")
+
+[node name="HeadSprite" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
+position = Vector2(277, 280)
+scale = Vector2(0.294, 0.294)
+texture = ExtResource("2_qj0ue")
 
 [node name="CenterContainer2" type="CenterContainer" parent="Control/MarginContainer/Control"]
 layout_mode = 2
