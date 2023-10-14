@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://xd18phyc65a4"]
+[gd_scene load_steps=8 format=3 uid="uid://xd18phyc65a4"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_dp0bb"]
+[ext_resource type="Texture2D" uid="uid://cqektbt20dc32" path="res://Assets/Character/Body/1/leftArm.png" id="2_oj5ec"]
 [ext_resource type="Texture2D" uid="uid://b7omki54hq42g" path="res://Assets/Character/Head/1.png" id="2_qj0ue"]
 [ext_resource type="Texture2D" uid="uid://ecsksvb8lac5" path="res://Assets/Character/Body/1/1.png" id="3_70h1k"]
+[ext_resource type="Texture2D" uid="uid://b80xc4xrgckmm" path="res://Assets/Character/Body/1/neck.png" id="3_ijct0"]
+[ext_resource type="Texture2D" uid="uid://chw3ul1xgbxrw" path="res://Assets/Character/Body/1/rightArm.png" id="4_qekdv"]
+[ext_resource type="Texture2D" uid="uid://bd8cj63d3ns7a" path="res://Assets/Character/Body/1/t-shirts/1.png" id="5_oocqj"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_dp0bb")
@@ -53,10 +57,30 @@ custom_minimum_size = Vector2(500, 548)
 layout_mode = 2
 color = Color(1, 1, 1, 0.105882)
 
+[node name="LeftArm" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
+position = Vector2(277, 280)
+scale = Vector2(0.294, 0.294)
+texture = ExtResource("2_oj5ec")
+
 [node name="BodySprite" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
 position = Vector2(277, 280)
 scale = Vector2(0.294485, 0.294485)
 texture = ExtResource("3_70h1k")
+
+[node name="RightArm" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
+position = Vector2(277, 280)
+scale = Vector2(0.294, 0.294)
+texture = ExtResource("4_qekdv")
+
+[node name="T-shirt" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
+position = Vector2(277, 280)
+scale = Vector2(0.294, 0.294)
+texture = ExtResource("5_oocqj")
+
+[node name="NeckSprite" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
+position = Vector2(277, 280)
+scale = Vector2(0.294, 0.294)
+texture = ExtResource("3_ijct0")
 
 [node name="HeadSprite" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
 position = Vector2(277, 280)
@@ -135,7 +159,37 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = ">"
 
+[node name="T-shirt" type="Control" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pre" type="Button" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = "<"
+
+[node name="text" type="Label" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "T-shirt"
+horizontal_alignment = 1
+
+[node name="Next" type="Button" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+text = ">"
+
 [connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Head/HBoxContainer/Pre" to="." method="_on_head_prew_pressed"]
 [connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Head/HBoxContainer/Next" to="." method="_on_head_next_pressed"]
 [connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body/HBoxContainer/Pre" to="." method="_on_body_prew_pressed"]
 [connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body/HBoxContainer/Next" to="." method="_on_body_next_pressed"]
+[connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer/Pre" to="." method="_on_head_prew_pressed"]
+[connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer/Next" to="." method="_on_head_next_pressed"]
