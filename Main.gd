@@ -4,6 +4,7 @@ const HEAD_ROOT = "res://Assets/Character/Head/"
 const BODY_ROOT = "res://Assets/Character/Body/"
 const NEKS_ROOT = "res://Assets/Character/Body/Neks"
 
+
 #body parts
 var head_array = []
 var body_array = []
@@ -11,16 +12,14 @@ var neks_array = []
 var left_arms_array = []
 var right_arms_array = []
 
-#clothe
-var tS_alkashka_array = []
-var tS_modnyshka_array = []
 
 #body parts
 var head_number = 1
 var body_number = 1
 
 #clothe
-var t_shirt = 1
+var t_shirt_number = 1
+var tShirts_style_count = 0
 
 #body parts
 @onready var _head = $Control/MarginContainer/Control/CharacterPreview/HeadSprite
@@ -30,7 +29,7 @@ var t_shirt = 1
 @onready var _rightArm = $Control/MarginContainer/Control/CharacterPreview/RightArm
 
 #clothe
-@onready var _tShirt = $Control/MarginContainer/Control/CharacterPreview/RightArm
+@onready var _tShirt = $Control/MarginContainer/Control/CharacterPreview/TShirt
 
 func get_head_path(index):
 	return HEAD_ROOT + str(index) + ".png"
@@ -47,7 +46,7 @@ func get_left_arm_path(index):
 func get_right_arm_path(index):
 	return BODY_ROOT + str(index) + "/rightArm.png"
 
-func get_clothe(bodyIndex, clotheType, clotheIndex):
+func get_clothe_path(bodyIndex, clotheType, clotheIndex):
 	return BODY_ROOT + str(bodyIndex) + "/" + str(clotheType) + "/" + str(clotheIndex) + ".png"
 
 
@@ -78,22 +77,6 @@ func get_body_parts_arrays():
 		i += 1
 
 
-func get_clothe_array(bodyIndex, clotheType):
-	while true:
-		var clotheIndex = 1
-		if load(get_clothe(bodyIndex, str(clotheType), clotheIndex)):
-			clotheIndex += 1
-			
-		else: 
-			break
-
-
-func get_clothes_arrays():
-	var bodyIndex = 1;
-	while true:
-		get_clothe_array(bodyIndex, "t-shirts")
-
-
 func  get_new_head():
 	if head_number == head_array.size() + 1:
 		head_number = 1
@@ -101,6 +84,15 @@ func  get_new_head():
 		head_number = head_array.size();
 	
 	_head.texture = head_array[head_number - 1]
+	
+	
+func  get_new_tShirt():
+	if(t_shirt_number == tShirts_style_count + 1):
+		t_shirt_number = 1
+	if(t_shirt_number == 0):
+		t_shirt_number = tShirts_style_count
+		
+	_tShirt.texture = load(get_clothe_path(body_number, "t-shirts", t_shirt_number))
 
 
 func  get_new_body():
@@ -109,34 +101,60 @@ func  get_new_body():
 	if body_number == 0:
 		body_number = body_array.size();
 	
+	
+	#body part texture load
 	_leftArm.texture = left_arms_array[body_number - 1]
 	_rightArm.texture = right_arms_array[body_number - 1] 
 	_neck.texture = neks_array[body_number - 1]
 	_body.texture = body_array[body_number - 1]
+	
+	#clothe
+	get_new_tShirt()
 
 
 func _on_head_next_pressed():
-	head_number+=1
+	head_number += 1
 	get_new_head()
 	
 func _on_head_prew_pressed():
-	head_number-=1
+	head_number -= 1
 	get_new_head()
 	
 func _on_body_next_pressed():
-	body_number+=1
+	body_number += 1
 	get_new_body()
 	
 func _on_body_prew_pressed():
-	body_number-=1
+	body_number -= 1
 	get_new_body()
 
+func _on_tSirt_next_pressed():
+	t_shirt_number += 1
+	get_new_tShirt()
+	
+func _on_tSirt_prev_pressed():
+	t_shirt_number -= 1
+	get_new_tShirt()
+
+
+func colculate_tShirts_count():
+	var dir = DirAccess.open(BODY_ROOT + "1/t-shirts")
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		
+		while file_name != "":
+			tShirts_style_count += 1
+			file_name = dir.get_next()
+			file_name = dir.get_next()
 
 
 func _ready():
-	get_body_parts_arrays();
-	get_head_array();
+	get_body_parts_arrays()
+	get_head_array()
+	
+	colculate_tShirts_count()
 
 
-func _process(delta):
+func _process(_delta):
 	pass

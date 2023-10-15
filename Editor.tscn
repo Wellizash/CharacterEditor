@@ -72,7 +72,7 @@ position = Vector2(277, 280)
 scale = Vector2(0.294, 0.294)
 texture = ExtResource("4_qekdv")
 
-[node name="T-shirt" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
+[node name="TShirt" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
 position = Vector2(277, 280)
 scale = Vector2(0.294, 0.294)
 texture = ExtResource("5_oocqj")
@@ -191,5 +191,5 @@ text = ">"
 [connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Head/HBoxContainer/Next" to="." method="_on_head_next_pressed"]
 [connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body/HBoxContainer/Pre" to="." method="_on_body_prew_pressed"]
 [connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body/HBoxContainer/Next" to="." method="_on_body_next_pressed"]
-[connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer/Pre" to="." method="_on_head_prew_pressed"]
-[connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer/Next" to="." method="_on_head_next_pressed"]
+[connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer/Pre" to="." method="_on_tSirt_prev_pressed"]
+[connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer/Next" to="." method="_on_tSirt_next_pressed"]
