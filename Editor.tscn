@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://xd18phyc65a4"]
+[gd_scene load_steps=9 format=3 uid="uid://xd18phyc65a4"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_dp0bb"]
 [ext_resource type="Texture2D" uid="uid://cqektbt20dc32" path="res://Assets/Character/Body/1/leftArm.png" id="2_oj5ec"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b80xc4xrgckmm" path="res://Assets/Character/Body/1/neck.png" id="3_ijct0"]
 [ext_resource type="Texture2D" uid="uid://chw3ul1xgbxrw" path="res://Assets/Character/Body/1/rightArm.png" id="4_qekdv"]
 [ext_resource type="Texture2D" uid="uid://bd8cj63d3ns7a" path="res://Assets/Character/Body/1/t-shirts/1.png" id="5_oocqj"]
+[ext_resource type="Script" path="res://Menu.gd" id="8_upbg4"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_dp0bb")
@@ -20,16 +21,7 @@ grow_vertical = 2
 color = Color(0, 0.258824, 0.286275, 0.215686)
 metadata/_edit_group_ = true
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
-layout_mode = 1
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -40,73 +32,79 @@ theme_override_constants/margin_top = 50
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 50
 
-[node name="Control" type="Control" parent="Control/MarginContainer"]
+[node name="Control" type="Control" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 5
 
-[node name="CharacterPreview" type="VBoxContainer" parent="Control/MarginContainer/Control"]
-custom_minimum_size = Vector2(500, 500)
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="CharacterPreview" type="VBoxContainer" parent="MarginContainer/Control/HBoxContainer"]
 layout_mode = 2
-offset_right = 548.0
-offset_bottom = 548.0
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="ColorRect" type="ColorRect" parent="Control/MarginContainer/Control/CharacterPreview"]
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Control/HBoxContainer/CharacterPreview"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer/Control/HBoxContainer/CharacterPreview/CenterContainer"]
 custom_minimum_size = Vector2(500, 548)
 layout_mode = 2
+size_flags_vertical = 3
 color = Color(1, 1, 1, 0.105882)
 
-[node name="LeftArm" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
-position = Vector2(277, 280)
+[node name="LeftArm" type="Sprite2D" parent="MarginContainer/Control/HBoxContainer/CharacterPreview/CenterContainer/ColorRect"]
+position = Vector2(265, 280)
 scale = Vector2(0.294, 0.294)
 texture = ExtResource("2_oj5ec")
 
-[node name="BodySprite" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
-position = Vector2(277, 280)
+[node name="BodySprite" type="Sprite2D" parent="MarginContainer/Control/HBoxContainer/CharacterPreview/CenterContainer/ColorRect"]
+position = Vector2(265, 280)
 scale = Vector2(0.294485, 0.294485)
 texture = ExtResource("3_70h1k")
 
-[node name="RightArm" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
-position = Vector2(277, 280)
-scale = Vector2(0.294, 0.294)
-texture = ExtResource("4_qekdv")
-
-[node name="TShirt" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
-position = Vector2(277, 280)
+[node name="TShirt" type="Sprite2D" parent="MarginContainer/Control/HBoxContainer/CharacterPreview/CenterContainer/ColorRect"]
+position = Vector2(265, 280)
 scale = Vector2(0.294, 0.294)
 texture = ExtResource("5_oocqj")
 
-[node name="NeckSprite" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
-position = Vector2(277, 280)
+[node name="RightArm" type="Sprite2D" parent="MarginContainer/Control/HBoxContainer/CharacterPreview/CenterContainer/ColorRect"]
+position = Vector2(265, 280)
+scale = Vector2(0.294, 0.294)
+texture = ExtResource("4_qekdv")
+
+[node name="NeckSprite" type="Sprite2D" parent="MarginContainer/Control/HBoxContainer/CharacterPreview/CenterContainer/ColorRect"]
+position = Vector2(265, 280)
 scale = Vector2(0.294, 0.294)
 texture = ExtResource("3_ijct0")
 
-[node name="HeadSprite" type="Sprite2D" parent="Control/MarginContainer/Control/CharacterPreview"]
-position = Vector2(277, 280)
+[node name="HeadSprite" type="Sprite2D" parent="MarginContainer/Control/HBoxContainer/CharacterPreview/CenterContainer/ColorRect"]
+position = Vector2(265, 280)
 scale = Vector2(0.294, 0.294)
 texture = ExtResource("2_qj0ue")
 
-[node name="CenterContainer2" type="CenterContainer" parent="Control/MarginContainer/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control/HBoxContainer"]
 layout_mode = 2
-offset_left = 552.0
-offset_right = 1052.0
-offset_bottom = 548.0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/Control/CenterContainer2"]
-layout_mode = 2
+size_flags_horizontal = 3
 alignment = 1
 
-[node name="Menu" type="VBoxContainer" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer"]
+[node name="Menu" type="VBoxContainer" parent="MarginContainer/Control/HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(500, 500)
 layout_mode = 2
 alignment = 1
+script = ExtResource("8_upbg4")
 
-[node name="Head" type="Control" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu"]
+[node name="Head" type="Control" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Head"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/Head"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -114,27 +112,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Pre" type="Button" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Head/HBoxContainer"]
+[node name="Pre" type="Button" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/Head/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = "<"
 
-[node name="Head" type="Label" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Head/HBoxContainer"]
+[node name="HeadLabel" type="Label" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/Head/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Head"
 horizontal_alignment = 1
 
-[node name="Next" type="Button" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Head/HBoxContainer"]
+[node name="Next" type="Button" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/Head/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = ">"
 
-[node name="Body" type="Control" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu"]
+[node name="Body" type="Control" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/Body"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -142,28 +140,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Pre" type="Button" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body/HBoxContainer"]
+[node name="Pre" type="Button" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/Body/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = "<"
 
-[node name="body" type="Label" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body/HBoxContainer"]
+[node name="BodyLabel" type="Label" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/Body/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Body
 "
 horizontal_alignment = 1
 
-[node name="Next" type="Button" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body/HBoxContainer"]
+[node name="Next" type="Button" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/Body/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = ">"
 
-[node name="T-shirt" type="Control" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu"]
+[node name="TShirt" type="Control" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/TShirt"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -171,25 +169,25 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Pre" type="Button" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer"]
+[node name="Pre" type="Button" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/TShirt/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = "<"
 
-[node name="text" type="Label" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer"]
+[node name="TShirtLabel" type="Label" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/TShirt/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "T-shirt"
 horizontal_alignment = 1
 
-[node name="Next" type="Button" parent="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer"]
+[node name="Next" type="Button" parent="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/TShirt/HBoxContainer"]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 text = ">"
 
-[connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Head/HBoxContainer/Pre" to="." method="_on_head_prew_pressed"]
-[connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Head/HBoxContainer/Next" to="." method="_on_head_next_pressed"]
-[connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body/HBoxContainer/Pre" to="." method="_on_body_prew_pressed"]
-[connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/Body/HBoxContainer/Next" to="." method="_on_body_next_pressed"]
-[connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer/Pre" to="." method="_on_tSirt_prev_pressed"]
-[connection signal="button_up" from="Control/MarginContainer/Control/CenterContainer2/VBoxContainer/Menu/T-shirt/HBoxContainer/Next" to="." method="_on_tSirt_next_pressed"]
+[connection signal="button_up" from="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/Head/HBoxContainer/Pre" to="." method="_on_head_prew_pressed"]
+[connection signal="button_up" from="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/Head/HBoxContainer/Next" to="." method="_on_head_next_pressed"]
+[connection signal="button_up" from="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/Body/HBoxContainer/Pre" to="." method="_on_body_prew_pressed"]
+[connection signal="button_up" from="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/Body/HBoxContainer/Next" to="." method="_on_body_next_pressed"]
+[connection signal="button_up" from="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/TShirt/HBoxContainer/Pre" to="." method="_on_tSirt_prev_pressed"]
+[connection signal="button_up" from="MarginContainer/Control/HBoxContainer/VBoxContainer/Menu/TShirt/HBoxContainer/Next" to="." method="_on_tSirt_next_pressed"]

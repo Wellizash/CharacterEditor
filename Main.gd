@@ -1,8 +1,11 @@
 extends Node
 
+
 const HEAD_ROOT = "res://Assets/Character/Head"
 const BODY_ROOT = "res://Assets/Character/Body"
 const NEKS_ROOT = "res://Assets/Character/Body/Neks"
+
+const CHARACTER_ROOT = "MarginContainer/Control/HBoxContainer/CharacterPreview/CenterContainer/ColorRect"
 
 
 var heads_number = []
@@ -13,14 +16,15 @@ var current_t_shirt = 1
 var current_body = 1
 var current_head = 1
 
+#preview
+@onready var _head = get_node(CHARACTER_ROOT + "/HeadSprite")
+@onready var _body = get_node(CHARACTER_ROOT + "/BodySprite")
+@onready var _neck = get_node(CHARACTER_ROOT + "/NeckSprite")
+@onready var _leftArm = get_node(CHARACTER_ROOT + "/LeftArm")
+@onready var _rightArm = get_node(CHARACTER_ROOT + "/RightArm")
+@onready var _tShirt = get_node(CHARACTER_ROOT + "/TShirt")
 
-@onready var _head = $Control/MarginContainer/Control/CharacterPreview/HeadSprite
-@onready var _body = $Control/MarginContainer/Control/CharacterPreview/BodySprite
-@onready var _neck = $Control/MarginContainer/Control/CharacterPreview/NeckSprite
-@onready var _leftArm = $Control/MarginContainer/Control/CharacterPreview/LeftArm
-@onready var _rightArm = $Control/MarginContainer/Control/CharacterPreview/RightArm
 
-@onready var _tShirt = $Control/MarginContainer/Control/CharacterPreview/TShirt
 
 
 func get_head_path():
