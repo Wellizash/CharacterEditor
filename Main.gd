@@ -44,8 +44,8 @@ func get_clothe_path(bodyIndex, clotheType, clotheIndex):
 
 func  get_new_head():
 	current_head -= 1
-	if current_head == heads_number.size() + 1:
-		current_head = 1
+	if current_head == heads_number.size():
+		current_head = 0
 	if current_head == -1:
 		current_head = heads_number.size() - 1;
 	current_head += 1
@@ -57,7 +57,6 @@ func  get_new_tShirt():
 		current_t_shirt = 1
 	if(current_t_shirt == 0):
 		current_t_shirt = t_shirts_number.size()
-	push_error("search in: " + get_clothe_path(current_body, "t-shirts", current_t_shirt))
 	_tShirt.texture = load(get_clothe_path(current_body, "t-shirts", current_t_shirt))
 
 
@@ -116,10 +115,7 @@ func colculate_files_in_directory(path, step, counter):
 func _ready():	
 	colculate_files_in_directory(HEAD_ROOT, 1, heads_number)
 	colculate_files_in_directory(BODY_ROOT, 1, bodys_number)
-	push_error(bodys_number.size())
 	colculate_files_in_directory(BODY_ROOT + "/1/t-shirts", 1, t_shirts_number)
-	push_error(t_shirts_number.size())
-
 
 func _process(_delta):
 	pass
