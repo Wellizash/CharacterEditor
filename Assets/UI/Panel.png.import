@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://2a3g7k08tcgq"
+path="res://.godot/imported/Panel.png-9a314fbfc1a6284333c4f399ce3c0f15.image"
+
+[deps]
+
+source_file="res://Assets/UI/Panel.png"
+dest_files=["res://.godot/imported/Panel.png-9a314fbfc1a6284333c4f399ce3c0f15.image"]
+
+[params]
+

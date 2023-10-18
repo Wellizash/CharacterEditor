@@ -5,8 +5,7 @@ const HEAD_ROOT = "res://Assets/Character/Head"
 const BODY_ROOT = "res://Assets/Character/Body"
 const NEKS_ROOT = "res://Assets/Character/Body/Neks"
 
-const CHARACTER_ROOT = "MarginContainer/Control/HBoxContainer/CharacterPreview/CenterContainer/ColorRect"
-
+const CHARACTER_ROOT = "CC_Editor/C_Editor/HBC_Editor/VBC_CharacterPreview/PreviewBackground/HBC_Peview/MC_Preview/Character"
 
 var heads_number = []
 var bodys_number = []
@@ -20,11 +19,9 @@ var current_head = 1
 @onready var _head = get_node(CHARACTER_ROOT + "/HeadSprite")
 @onready var _body = get_node(CHARACTER_ROOT + "/BodySprite")
 @onready var _neck = get_node(CHARACTER_ROOT + "/NeckSprite")
-@onready var _leftArm = get_node(CHARACTER_ROOT + "/LeftArm")
-@onready var _rightArm = get_node(CHARACTER_ROOT + "/RightArm")
-@onready var _tShirt = get_node(CHARACTER_ROOT + "/TShirt")
-
-
+@onready var _leftArm = get_node(CHARACTER_ROOT + "/LeftArmSprite")
+@onready var _rightArm = get_node(CHARACTER_ROOT + "/RightArmSprite")
+@onready var _tShirt = get_node(CHARACTER_ROOT + "/TShirtSprite")
 
 
 func get_head_path():
