@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://xd18phyc65a4"]
+[gd_scene load_steps=5 format=3 uid="uid://xd18phyc65a4"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_dp0bb"]
-[ext_resource type="Theme" uid="uid://dlj61kmlfqo6u" path="res://SimpleTheme.tres" id="2_p5t5b"]
+[ext_resource type="Theme" uid="uid://dlj61kmlfqo6u" path="res://Assets/SimpleTheme.tres" id="2_pmt5p"]
 [ext_resource type="PackedScene" uid="uid://d1psmtcks6grj" path="res://Character.tscn" id="2_wb6e8"]
+[ext_resource type="Script" path="res://Menu.gd" id="5_ebrtj"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_dp0bb")
@@ -24,7 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("2_p5t5b")
+theme = ExtResource("2_pmt5p")
 
 [node name="C_Editor" type="Control" parent="CC_Editor"]
 layout_mode = 2
@@ -79,6 +80,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 15
 alignment = 1
+script = ExtResource("5_ebrtj")
 
 [node name="C_Head" type="Control" parent="CC_Editor/C_Editor/HBC_Editor/VBC_Menu"]
 custom_minimum_size = Vector2(0, 70)
@@ -96,7 +98,7 @@ grow_vertical = 2
 [node name="Head" type="Label" parent="CC_Editor/C_Editor/HBC_Editor/VBC_Menu/C_Head/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "T-shirt"
+text = "Head"
 vertical_alignment = 2
 
 [node name="HBC_Head" type="HBoxContainer" parent="CC_Editor/C_Editor/HBC_Editor/VBC_Menu/C_Head/VBoxContainer"]
@@ -244,6 +246,7 @@ layout_mode = 2
 size_flags_vertical = 4
 text = ">"
 
+[connection signal="character_change" from="." to="CC_Editor/C_Editor/HBC_Editor/VBC_Menu" method="on_prsset_change"]
 [connection signal="button_up" from="CC_Editor/C_Editor/HBC_Editor/VBC_Menu/C_Head/VBoxContainer/HBC_Head/Prev" to="." method="_on_head_prew_pressed"]
 [connection signal="button_up" from="CC_Editor/C_Editor/HBC_Editor/VBC_Menu/C_Head/VBoxContainer/HBC_Head/Next" to="." method="_on_head_next_pressed"]
 [connection signal="button_up" from="CC_Editor/C_Editor/HBC_Editor/VBC_Menu/C_Body/VBoxContainer/HBC_Body/Prev" to="." method="_on_body_prew_pressed"]

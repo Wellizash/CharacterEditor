@@ -1,11 +1,15 @@
 extends Node
 
+var NewCharacter = Character 
 
+signal character_change
 const HEAD_ROOT = "res://Assets/Character/Head"
 const BODY_ROOT = "res://Assets/Character/Body"
 const NEKS_ROOT = "res://Assets/Character/Body/Neks"
 
 const CHARACTER_ROOT = "CC_Editor/C_Editor/HBC_Editor/VBC_CharacterPreview/PreviewBackground/HBC_Peview/MC_Preview/Character"
+
+signal charecter_chenged(node, state)
 
 var heads_number = []
 var bodys_number = []
@@ -51,6 +55,8 @@ func  get_new_head():
 		current_head = heads_number.size() - 1;
 	current_head += 1
 	_head.texture = load(get_head_path())
+	Character.set_head(current_head)
+	emit_signal("character_change")
 	
 	
 func  get_new_tShirt():
@@ -59,6 +65,8 @@ func  get_new_tShirt():
 	if(current_t_shirt == 0):
 		current_t_shirt = t_shirts_number.size()
 	_tShirt.texture = load(get_clothe_path(current_body, "t-shirts", current_t_shirt))
+	Character.set_t_shirt(current_t_shirt)
+	emit_signal("character_change")
 
 
 func  get_new_body():
@@ -71,8 +79,11 @@ func  get_new_body():
 	_rightArm.texture = load(get_right_arm_path())
 	_neck.texture = load(get_neck_path())
 	_body.texture = load(get_body_path())
-	
+	Character.set_body(current_body)
+	emit_signal("character_change")
+	print_debug(str(Character.get_body()))
 	get_new_tShirt()
+	
 
 
 func _on_head_next_pressed():
